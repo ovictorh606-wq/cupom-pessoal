@@ -1,0 +1,34 @@
+{
+  "_leiaisto": "Todas as fontes abaixo começam com enabled:false de propósito. Os seletores CSS são exemplos ILUSTRATIVOS — antes de habilitar uma fonte, abra a página real no navegador, aperte botão direito > Inspecionar no código do cupom, e ajuste item_selector/code_selector/desc_selector/date_selector pro HTML de verdade daquele site. Veja o README.md, seção 'Configurando as fontes', para o passo a passo. Fontes do tipo 'community' (ex.: agregadores de cupom) tendem a ter proteção anti-bot e termos de uso que restringem coleta automatizada — prefira fontes 'official_store' (a página de cupons da própria loja) como base principal.",
+
+  "sources": [
+    {
+      "name": "EXEMPLO — página oficial de cupons de uma loja",
+      "enabled": false,
+      "type": "official_store",
+      "url": "https://www.sualojafavorita.com.br/cupons-de-desconto",
+      "domain": "sualojafavorita.com.br",
+      "item_selector": ".cupom-card, .coupon-item, article.oferta",
+      "code_selector": ".cupom-codigo, .coupon-code",
+      "desc_selector": ".cupom-descricao, .coupon-desc, p",
+      "date_selector": ".cupom-data, time"
+    },
+    {
+      "name": "EXEMPLO — agregador de comunidade (ex.: Pelando)",
+      "enabled": false,
+      "type": "community",
+      "url": "https://www.pelando.com.br/maisrecentes/cupons",
+      "item_selector": "article, div.list-item",
+      "code_selector": ".couponCode, .cupom-codigo, code",
+      "desc_selector": "h2, .thread-title",
+      "store_selector": ".merchant-name, .thread-merchant",
+      "date_selector": "time, .thread-date",
+      "store_domain_map": {
+        "Amazon": ["amazon.com.br"],
+        "Magazine Luiza": ["magazineluiza.com.br", "magalu.com"],
+        "Americanas": ["americanas.com.br"],
+        "Shopee": ["shopee.com.br"]
+      }
+    }
+  ]
+}

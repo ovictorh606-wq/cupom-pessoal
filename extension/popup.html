@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cupom Pessoal</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <div class="app__brand">
+          <span class="app__mark" aria-hidden="true">%</span>
+          <div>
+            <h1 class="app__title">Cupom Pessoal</h1>
+            <p class="app__subtitle" id="syncStatus">Verificando sincronização…</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="app__body">
+        <section class="card">
+          <button id="testButton" class="btn btn--primary">
+            Testar cupons agora
+          </button>
+          <button id="syncButton" class="btn btn--ghost">
+            Sincronizar lista
+          </button>
+        </section>
+
+        <section class="card" id="resultsCard" hidden>
+          <h2 class="card__title">Resultado</h2>
+          <div id="resultsList" class="results"></div>
+          <p id="bestResult" class="best-result"></p>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Meus cupons privados</h2>
+          <p class="card__hint">
+            Ficam só no seu navegador — nunca são enviados a lugar nenhum.
+          </p>
+          <div class="private-form">
+            <input
+              id="privateCouponInput"
+              type="text"
+              placeholder="Ex: AMIGO10"
+            />
+            <button id="addPrivateButton" class="btn btn--secondary">
+              Adicionar
+            </button>
+          </div>
+          <ul id="privateCouponList" class="private-list"></ul>
+        </section>
+
+        <section class="card" id="configCard">
+          <h2 class="card__title">Configuração</h2>
+          <label class="field">
+            <span>URL do seu cupons.json (GitHub Pages)</span>
+            <input
+              id="feedUrlInput"
+              type="text"
+              placeholder="https://seu-usuario.github.io/seu-repo/cupons.json"
+            />
+          </label>
+          <button id="saveFeedUrlButton" class="btn btn--secondary">
+            Salvar
+          </button>
+        </section>
+      </main>
+
+      <footer class="app__footer">
+        <span id="generatedAt"></span>
+      </footer>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
