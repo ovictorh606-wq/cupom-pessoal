@@ -1,0 +1,49 @@
+name: Atualizar cupons
+
+"on":
+  schedule:
+    # Roda a cada hora, no minuto 7 (evita o pico de tráfego que acontece
+    # exatamente em cada hora cheia nos runners do GitHub — não é obrigatório,
+    # só ajuda a fila a andar mais rápido).
+    - cron: "7 * * * *"
+  workflow_dispatch: {} # permite rodar manualmente na aba "Actions" do repositório
+
+permissions:
+  contents: write # necessário pro job poder commitar o cupons.json atualizado
+
+concurrency:
+  group: update-coupons
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: scraper/requirements.txt
+
+      - name: Instalar dependências
+        run: pip install -r scraper/requirements.txt
+
+      - name: Rodar o scraper
+        run: python scraper/scraper.py
+
+      - name: Commitar cupons.json se houver mudança
+        run: |
+          git config user.name "cupom-bot"
+          git config user.email "cupom-bot@users.noreply.github.com"
+          git add docs/cupons.json scraper/.state.json
+          if git diff --cached --quiet; then
+            echo "Nada novo pra commitar."
+          else
+            git commit -m "chore: atualizar cupons.json ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+            git push
+          fi
