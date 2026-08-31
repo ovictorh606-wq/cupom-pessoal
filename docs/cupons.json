@@ -1,19 +1,6 @@
 {
-  "generated_at": "2026-08-30T22:41:14Z",
+  "generated_at": "2026-08-31T01:20:43Z",
   "window_hours": 48,
-  "count": 1,
-  "coupons": [
-    {
-      "id": "exemplo:BEMVINDO10",
-      "store": "Exemplo — isto é só um cupom de demonstração",
-      "store_domains": [],
-      "code": "BEMVINDO10",
-      "description": "Este arquivo é substituído automaticamente assim que o GitHub Actions rodar o scraper pela primeira vez. Configure suas fontes reais em scraper/sources.json.",
-      "discount_type": "unknown",
-      "discount_value": null,
-      "source_url": "",
-      "first_seen": "2026-08-29T00:00:00Z",
-      "last_confirmed": "2026-08-29T00:00:00Z"
-    }
-  ]
+  "count": 0,
+  "coupons": []
 }
